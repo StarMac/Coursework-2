@@ -6,7 +6,7 @@ public class CrackedBlock : AbstractBlock
 {
     protected override void UpdateVisualState()
     {
-        text.SetText(hitsRemaining.ToString());
+        base.UpdateVisualState();
         spriteRenderer.color = Color.Lerp(Color.magenta + Color.black, Color.white, hitsRemaining / 10f);
         text.color = Color.Lerp(Color.magenta, Color.white, hitsRemaining / 10f);
     }

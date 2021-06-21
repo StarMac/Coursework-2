@@ -8,7 +8,7 @@ public class ToxicBlock : Block
     private Coroutine toxicRoutine;
     protected override void UpdateVisualState()
     {
-        text.SetText(hitsRemaining.ToString());
+        base.UpdateVisualState();
         spriteRenderer.color = Color.Lerp(Color.green + Color.black, Color.white, hitsRemaining / 10f);
         text.color = Color.Lerp(Color.green, Color.white, hitsRemaining / 10f);
     }

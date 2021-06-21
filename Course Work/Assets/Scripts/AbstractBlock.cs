@@ -16,7 +16,10 @@ public abstract class AbstractBlock : MonoBehaviour
         UpdateVisualState();
     }
 
-    protected abstract void UpdateVisualState();
+    protected virtual void UpdateVisualState() 
+    {
+        text.SetText(hitsRemaining.ToString());
+    }
 
     protected abstract void OnCollisionEnter2D(Collision2D collision);
 

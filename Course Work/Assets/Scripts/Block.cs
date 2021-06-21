@@ -6,7 +6,7 @@ public class Block : AbstractBlock
 {
     protected override void UpdateVisualState()
     {
-        text.SetText(hitsRemaining.ToString());
+        base.UpdateVisualState();
         spriteRenderer.color = Color.Lerp(Color.blue, Color.white, hitsRemaining / 10f);
         text.color = Color.Lerp(Color.blue, Color.white, hitsRemaining / 10f);
     }
