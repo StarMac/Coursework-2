@@ -78,8 +78,11 @@ public class BallLauncher : MonoBehaviour
 
     private void EndDrag()
     {
-        StartCoroutine(LaunchBalls());
-        ballsWasReturn = false;
+        if (endDragPosition != startDragPosition && endDragPosition.y < startDragPosition.y && startDragPosition.y - endDragPosition.y > 0.3)
+        {
+            StartCoroutine(LaunchBalls());
+            ballsWasReturn = false;
+        }
         GetComponent<LineRenderer>().startWidth = 0f;
         GetComponent<LineRenderer>().endWidth = 0f;
     }
@@ -107,6 +110,17 @@ public class BallLauncher : MonoBehaviour
         endDragPosition = worldPosition;
 
         Vector3 direction = endDragPosition - startDragPosition;
+
+        if (endDragPosition != startDragPosition && endDragPosition.y < startDragPosition.y && startDragPosition.y - endDragPosition.y > 0.3)
+        {
+            GetComponent<LineRenderer>().startColor = new Color32(201, 53, 250, 255);
+            GetComponent<LineRenderer>().endColor = new Color32(201, 53, 250, 255);
+        }
+        else
+        {
+            GetComponent<LineRenderer>().startColor = new Color32(95, 25, 116, 255);
+            GetComponent<LineRenderer>().endColor = new Color32(95, 25, 116, 255);
+        }
 
         launchPreview.SetEndPoint(transform.position - direction);
     }
